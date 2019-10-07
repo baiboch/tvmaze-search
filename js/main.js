@@ -21,7 +21,7 @@
     showSearch(searchQuery) {
       return this.search(`search/shows?q=${searchQuery}`);
     },
-    getCast(castId) {
+    getCasts(castId) {
       return this.search(`shows/${castId}/cast`);
     },
   };
@@ -48,7 +48,7 @@
         let cellCast = row.insertCell();
         let table = window.document.createElement('table');
 
-        tvMazeApiService.getCast(item.show.id).then(casts => {
+        tvMazeApiService.getCasts(item.show.id).then(casts => {
           if (casts.length > 0) {
             // Sorting results
             casts.sort(function (a, b) {

@@ -67,7 +67,7 @@
                 window.document.createTextNode(cast.person.name)
               );
               row.insertCell().appendChild(
-                window.document.createTextNode(cast.person.birthday ? cast.person.birthday : '')
+                window.document.createTextNode(cast.person.birthday ? cast.person.birthday : ' - ')
               );
             });
             cellCast.appendChild(table);

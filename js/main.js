@@ -6,7 +6,7 @@
   const apiBaseUrl = 'http://api.tvmaze.com/';
 
   const tvMazeApiService = {
-    search(endpoint) {
+    requestToEndpoint(endpoint) {
       return new Promise((resolve, reject) => {
         window.fetch(`${apiBaseUrl}${endpoint}`).then(res => {
           if (res.status === 200) {
@@ -18,24 +18,24 @@
         });
       });
     },
-    showSearch(searchQuery) {
-      return this.search(`search/shows?q=${searchQuery}`);
+    search(searchQuery) {
+      return this.requestToEndpoint(`search/shows?q=${searchQuery}`);
     },
     getCasts(castId) {
-      return this.search(`shows/${castId}/cast`);
+      return this.requestToEndpoint(`shows/${castId}/cast`);
     },
   };
 
   const appService = {
-    search(searchQuery) {
+    searchResult(searchQuery) {
       resultItems = [];
-      return tvMazeApiService.showSearch(searchQuery).then(data => {
+      return tvMazeApiService.search(searchQuery).then(data => {
         if (data.length > 0) {
           resultItems = data;
         }
       });
     },
-    renderContent(items) {
+    renderResult(items) {
       const contentBlock = window.document.getElementById('content');
       contentBlock.innerHTML = '';
       items.forEach((item, index) => {
@@ -99,10 +99,10 @@
   window.document.getElementById('search-btn')
     .addEventListener('click', () => {
       const searchQuery = window.document.getElementById('search-input').value.trim();
-      appService.search(searchQuery).then(() => {
+      appService.searchResult(searchQuery).then(() => {
         if (resultItems.length > 0) {
           appService.renderPagination(resultItems);
-          appService.renderContent(resultItems.slice(0, itemsPerPage))
+          appService.renderResult(resultItems.slice(0, itemsPerPage))
         } else {
           alert('No result... :( Try search for something else!');
         }
@@ -118,6 +118,6 @@
       event.target.parentNode.classList.add('active');
       const page = event.target.getAttribute('data-page');
       const offset = (parseInt(page, 10) - 1) * itemsPerPage;
-      appService.renderContent(resultItems.slice(offset, offset + itemsPerPage));
+      appService.renderResult(resultItems.slice(offset, offset + itemsPerPage));
     });
 }(window));

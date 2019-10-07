@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>TVmaze!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"></nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>TVmaze!</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-xs-6">
+            <input class="form-control" type="text" name="search" id="search-input"/>
+        </div>
+        <div class="col-md-4 col-xs-4">
+            <button type="button" class="btn btn-success" id="search-btn">Search...</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination" id="pagination-block"></ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <table class="table" id="content"></table>
+        </div>
+    </div>
+</div>
+<hr>
+<footer><p>&copy; Company 2019</p></footer>
+<script src="js/main.js"></script>
+</body>
+</html>

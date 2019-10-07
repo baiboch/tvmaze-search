@@ -32,8 +32,6 @@
       return tvMazeApiService.showSearch(searchQuery).then(data => {
         if (data.length > 0) {
           resultItems = data;
-        } else {
-          alert('No result. :( Try search for something else. :)');
         }
       });
     },
@@ -105,6 +103,8 @@
         if (resultItems.length > 0) {
           appService.renderPagination(resultItems);
           appService.renderContent(resultItems.slice(0, itemsPerPage))
+        } else {
+          alert('No result... :( Try search for something else!');
         }
       });
     });

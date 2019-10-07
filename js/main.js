@@ -6,7 +6,6 @@
   const apiBaseUrl = 'http://api.tvmaze.com/';
 
   const tvMazeApiService = {
-    showItems: [],
     search(endpoint) {
       return new Promise((resolve, reject) => {
         window.fetch(`${apiBaseUrl}${endpoint}`).then(res => {
@@ -45,10 +44,7 @@
         let row = contentBlock.insertRow();
         let cellName = row.insertCell();
 
-        cellName.classList.add('name');
-        cellName.appendChild(
-          window.document.createTextNode(item.show.name)
-        );
+        cellName.appendChild(window.document.createTextNode(item.show.name));
         let cellCast = row.insertCell();
         let table = window.document.createElement('table');
 

@@ -40,9 +40,13 @@
       contentBlock.innerHTML = '';
       items.forEach((item, index) => {
         let row = contentBlock.insertRow();
-        let cellName = row.insertCell();
 
+        let cellId = row.insertCell();
+        cellId.appendChild(window.document.createTextNode(item.show.id));
+
+        let cellName = row.insertCell();
         cellName.appendChild(window.document.createTextNode(item.show.name));
+
         let cellCast = row.insertCell();
         let table = window.document.createElement('table');
 
